@@ -1,10 +1,7 @@
-﻿using System;
+﻿using KGG_1.Properties;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -29,6 +26,7 @@ namespace KGG_1
 
             // Тултип с функцией
             buttonDrawPlot.Tag = Resources.Task1Function;
+            //fucking git
 
             // Значения по умолчанию
             textBoxA.Text = "1";
