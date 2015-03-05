@@ -18,8 +18,8 @@ namespace KGG_1
 
             // Значения по умолчанию
             textBoxA.Text = "1";
-            textBoxB.Text = "0";
-            textBoxC.Text = "0";
+            textBoxB.Text = "-3";
+            textBoxC.Text = "1";
             textBoxAlpha.Text = "-5";
             textBoxBeta.Text = "5";
 
@@ -36,16 +36,31 @@ namespace KGG_1
         {
             int maxX = pictureBoxPlot.Width;
             int maxY = pictureBoxPlot.Height;
+
+            int centerY; // пиксель по x в котором рисовать ось oy
+            if (true) //Alpha < 0 && Beta > 0
+            {
+                //xx=(x-xmax)*maxx/(xmin-xmax);
+                //int a = (-1 * Alpha + Beta) * maxX;
+                //MessageBox.Show(a.ToString());
+                centerY = (-Beta * maxX) / (Alpha - Beta);
+                e.Graphics.DrawLine(Pens.Blue, centerY, 0, centerY, maxY);
+            }
+            int centerX = maxY / 2; // пиксель по y в котором рисовать ось ox
+            e.Graphics.DrawLine(Pens.Blue, 0, centerX, maxX, centerX);
+
             int yy, xxPrev = -1, yyPrev = maxY / 2;
-            float x, y;
+            double x, y, yyDouble, denominator;
             //нарисовать оси, вычислив центр
             for(int xx = 0; xx < maxX; ++xx)
             {
-                x = Alpha + (float)(xx * (Beta - Alpha))/(float)maxX;
-                y = A * x / ((B + x) * (C - x) * (C - x));
+                x = Alpha + (double)(xx * (Beta - Alpha))/(double)maxX;
+                denominator = (B + x) * (C - x) * (C - x);
+                y = A * x / denominator;
 
-
-                yy = (int)(((y - Beta) * maxY)/((float)(Alpha - Beta)));
+                
+                yyDouble = ((y - Beta) * maxY)/((double)(Alpha - Beta));
+                yy = Convert.ToInt32(yyDouble);
                 e.Graphics.DrawLine(Pens.Red, xxPrev, yyPrev, xx, yy);
                 xxPrev = xx;
                 yyPrev = yy;
