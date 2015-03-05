@@ -43,6 +43,8 @@ namespace KGG_1
             {
                 x = Alpha + (float)(xx * (Beta - Alpha))/(float)maxX;
                 y = A * x / ((B + x) * (C - x) * (C - x));
+
+
                 yy = (int)(((y - Beta) * maxY)/((float)(Alpha - Beta)));
                 e.Graphics.DrawLine(Pens.Red, xxPrev, yyPrev, xx, yy);
                 xxPrev = xx;
