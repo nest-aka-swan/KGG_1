@@ -20,8 +20,8 @@ namespace KGG_1
             textBoxA.Text = "1";
             textBoxB.Text = "-3";
             textBoxC.Text = "1";
-            textBoxAlpha.Text = "-5";
-            textBoxBeta.Text = "5";
+            textBoxAlpha.Text = "-50";
+            textBoxBeta.Text = "50";
 
             InitCoefficients();
         }
@@ -38,32 +38,44 @@ namespace KGG_1
             int maxY = pictureBoxPlot.Height;
 
             int centerY; // пиксель по x в котором рисовать ось oy
-            if (true) //Alpha < 0 && Beta > 0
+            if (Alpha < 0 && Beta > 0)
             {
-                //xx=(x-xmax)*maxx/(xmin-xmax);
-                //int a = (-1 * Alpha + Beta) * maxX;
-                //MessageBox.Show(a.ToString());
-                centerY = (-Beta * maxX) / (Alpha - Beta);
-                e.Graphics.DrawLine(Pens.Blue, centerY, 0, centerY, maxY);
+                centerY = -Alpha * maxX/(Beta - Alpha);
             }
+            else if(Alpha >= 0 && Beta > 0)
+            {
+                centerY = 0;
+            }
+            else
+            {
+                centerY = maxX - 1;
+            }
+            e.Graphics.DrawLine(Pens.Blue, centerY, 0, centerY, maxY);
+
             int centerX = maxY / 2; // пиксель по y в котором рисовать ось ox
             e.Graphics.DrawLine(Pens.Blue, 0, centerX, maxX, centerX);
 
-            int yy, xxPrev = -1, yyPrev = maxY / 2;
+            int yy, xxPrev = 0, yyPrev = 0;
             double x, y, yyDouble, denominator;
             //нарисовать оси, вычислив центр
             for(int xx = 0; xx < maxX; ++xx)
             {
                 x = Alpha + (double)(xx * (Beta - Alpha))/(double)maxX;
                 denominator = (B + x) * (C - x) * (C - x);
-                y = A * x / denominator;
 
-                
-                yyDouble = ((y - Beta) * maxY)/((double)(Alpha - Beta));
-                yy = Convert.ToInt32(yyDouble);
-                e.Graphics.DrawLine(Pens.Red, xxPrev, yyPrev, xx, yy);
-                xxPrev = xx;
-                yyPrev = yy;
+                if(Math.Abs(denominator) > 0.000001)
+                {
+                    y = A * x / denominator;
+                    yyDouble = maxY - y * (maxY / (double)(Math.Abs(Beta) + Math.Abs(Alpha)));
+                    yyDouble -= centerX;
+                    yy = Convert.ToInt32(yyDouble);
+                    if(!(xxPrev == 0) && !(yyPrev == 0))
+                    {
+                        e.Graphics.DrawLine(Pens.Red, xxPrev, yyPrev, xx, yy);
+                    }
+                    yyPrev = yy;
+                }
+                xxPrev = xx;  
             }
         }
 
