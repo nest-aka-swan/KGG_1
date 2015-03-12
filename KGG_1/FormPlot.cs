@@ -20,8 +20,8 @@ namespace KGG_1
             textBoxA.Text = "1";
             textBoxB.Text = "-3";
             textBoxC.Text = "1";
-            textBoxAlpha.Text = "-50";
-            textBoxBeta.Text = "50";
+            textBoxAlpha.Text = "-5";
+            textBoxBeta.Text = "5";
 
             InitCoefficients();
         }
@@ -50,9 +50,49 @@ namespace KGG_1
             {
                 centerY = maxX - 1;
             }
-            e.Graphics.DrawLine(Pens.Blue, centerY, 0, centerY, maxY);
-
             int centerX = maxY / 2; // пиксель по y в котором рисовать ось ox
+            int partWidth = maxX / (Beta - Alpha);
+            //сетка
+            var font = new Font("Arial", 16);
+            var brush = new SolidBrush(Color.Black);
+            // вверх от ох
+            int counter = 1;
+            for (int i = centerX - partWidth; i >= 0; i--)
+            {
+                e.Graphics.DrawLine(Pens.DarkGray, 0, i, maxX, i);
+                e.Graphics.DrawString(counter.ToString(), font, brush, centerY - 20, i);
+                i = i - partWidth + 1;
+                counter++;
+            }
+            // вниз от ох
+            counter = -1;
+            for (int i = centerX + partWidth; i <= maxY; i++)
+            {
+                e.Graphics.DrawLine(Pens.DarkGray, 0, i, maxX, i);
+                e.Graphics.DrawString(counter.ToString(), font, brush, centerY - 25, i);
+                i = i + partWidth - 1;
+                counter--;
+            }
+            // влево от оу
+            counter = -1;
+            for (int i = centerY - partWidth; i >= 0; i--)
+            {
+                e.Graphics.DrawLine(Pens.DarkGray, i, 0, i, maxY);
+                e.Graphics.DrawString(counter.ToString(), font, brush, i - 20, centerX + 5);
+                i = i - partWidth + 1;
+                counter--;
+            }
+            // вправо от оу
+            counter = 0;
+            for (int i = centerY; i <= maxX; i++)
+            {
+                e.Graphics.DrawLine(Pens.DarkGray, i, 0, i, maxY);
+                e.Graphics.DrawString(counter.ToString(), font, brush, i - 20, centerX + 5);
+                i = i + partWidth - 1;
+                counter++;
+            }
+
+            e.Graphics.DrawLine(Pens.Blue, centerY, 0, centerY, maxY);
             e.Graphics.DrawLine(Pens.Blue, 0, centerX, maxX, centerX);
 
             int yy, xxPrev = 0, yyPrev = 0;
