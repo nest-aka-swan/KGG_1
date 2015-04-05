@@ -224,9 +224,9 @@
             this.panelCartesianPlot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panelCartesianPlot.Controls.Add(this.groupBoxPlot);
             this.panelCartesianPlot.Controls.Add(this.groupBoxParameters);
-            this.panelCartesianPlot.Location = new System.Drawing.Point(214, 13);
+            this.panelCartesianPlot.Location = new System.Drawing.Point(214, -2429);
             this.panelCartesianPlot.Name = "panelCartesianPlot";
-            this.panelCartesianPlot.Size = new System.Drawing.Size(575, 544);
+            this.panelCartesianPlot.Size = new System.Drawing.Size(610, 1765);
             this.panelCartesianPlot.TabIndex = 4;
             // 
             // customizedToolTipDrawPlot
