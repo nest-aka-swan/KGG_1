@@ -109,7 +109,7 @@ namespace KGG_1
                     yyDouble = maxY - y * (maxY / (double)(Math.Abs(Beta) + Math.Abs(Alpha)));
                     yyDouble -= centerX;
                     yy = Convert.ToInt32(yyDouble);
-                    if (!(xxPrev == 0) && !(yyPrev == 0) && (Math.Abs(yyPrev-yy)<maxY-10))
+                    if(!(xxPrev == 0) && !(yyPrev == 0))
                     {
                         e.Graphics.DrawLine(Pens.Red, xxPrev, yyPrev, xx, yy);
                     }
@@ -129,26 +129,14 @@ namespace KGG_1
         }
 
         // двойной клик на пункт
-        void listBoxTask_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            int index = this.listBoxTask.IndexFromPoint(e.Location);
-            if (index != System.Windows.Forms.ListBox.NoMatches)
-            {
-                switch (index)
-                {
-                    case 0:
-                        panelCartesianPlot.Visible = true;
-                        //panelPolarPlot.Visible = false;
-                        break;
-                    case 1:
-                        //panelPolarPlot.Visible = true;
-                        panelCartesianPlot.Visible = false;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+        //void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        //{
+        //    int index = this.listBox1.IndexFromPoint(e.Location);
+        //    if (index != System.Windows.Forms.ListBox.NoMatches)
+        //    {
+        //        MessageBox.Show(index.ToString());
+        //    }
+        //}
 
         //как скрывать элементы
         //private void button1_Click(object sender, EventArgs e)

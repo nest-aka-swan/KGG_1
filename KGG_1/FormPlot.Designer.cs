@@ -44,13 +44,11 @@
             this.pictureBoxPlot = new System.Windows.Forms.PictureBox();
             this.groupBoxTask = new System.Windows.Forms.GroupBox();
             this.listBoxTask = new System.Windows.Forms.ListBox();
-            this.panelCartesianPlot = new System.Windows.Forms.Panel();
             this.customizedToolTipDrawPlot = new KGG_1.CustomizedToolTip();
             this.groupBoxParameters.SuspendLayout();
             this.groupBoxPlot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
             this.groupBoxTask.SuspendLayout();
-            this.panelCartesianPlot.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxParameters
@@ -69,7 +67,7 @@
             this.groupBoxParameters.Controls.Add(this.textBoxA);
             this.groupBoxParameters.Controls.Add(this.labelB);
             this.groupBoxParameters.Controls.Add(this.labelA);
-            this.groupBoxParameters.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxParameters.Location = new System.Drawing.Point(213, 13);
             this.groupBoxParameters.Name = "groupBoxParameters";
             this.groupBoxParameters.Size = new System.Drawing.Size(565, 57);
             this.groupBoxParameters.TabIndex = 1;
@@ -174,9 +172,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxPlot.AutoSize = true;
             this.groupBoxPlot.Controls.Add(this.pictureBoxPlot);
-            this.groupBoxPlot.Location = new System.Drawing.Point(0, 57);
+            this.groupBoxPlot.Location = new System.Drawing.Point(213, 77);
             this.groupBoxPlot.Name = "groupBoxPlot";
-            this.groupBoxPlot.Size = new System.Drawing.Size(565, 484);
+            this.groupBoxPlot.Size = new System.Drawing.Size(562, 483);
             this.groupBoxPlot.TabIndex = 2;
             this.groupBoxPlot.TabStop = false;
             this.groupBoxPlot.Text = "График";
@@ -187,7 +185,7 @@
             this.pictureBoxPlot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxPlot.Location = new System.Drawing.Point(3, 16);
             this.pictureBoxPlot.Name = "pictureBoxPlot";
-            this.pictureBoxPlot.Size = new System.Drawing.Size(559, 465);
+            this.pictureBoxPlot.Size = new System.Drawing.Size(556, 464);
             this.pictureBoxPlot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxPlot.TabIndex = 0;
             this.pictureBoxPlot.TabStop = false;
@@ -208,26 +206,14 @@
             this.listBoxTask.FormattingEnabled = true;
             this.listBoxTask.Items.AddRange(new object[] {
             "График функции",
-            "Полярные координаты",
-            "Алгоритм Брезенхема"});
+            "Алгоритм Брезенхема",
+            "Многоугольники",
+            "График поверхности",
+            "Удаление невидимых линий"});
             this.listBoxTask.Location = new System.Drawing.Point(6, 19);
             this.listBoxTask.Name = "listBoxTask";
             this.listBoxTask.Size = new System.Drawing.Size(182, 524);
             this.listBoxTask.TabIndex = 0;
-            this.listBoxTask.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxTask_MouseDoubleClick);
-            // 
-            // panelCartesianPlot
-            // 
-            this.panelCartesianPlot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelCartesianPlot.AutoSize = true;
-            this.panelCartesianPlot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelCartesianPlot.Controls.Add(this.groupBoxPlot);
-            this.panelCartesianPlot.Controls.Add(this.groupBoxParameters);
-            this.panelCartesianPlot.Location = new System.Drawing.Point(214, -2429);
-            this.panelCartesianPlot.Name = "panelCartesianPlot";
-            this.panelCartesianPlot.Size = new System.Drawing.Size(610, 1765);
-            this.panelCartesianPlot.TabIndex = 4;
             // 
             // customizedToolTipDrawPlot
             // 
@@ -244,8 +230,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 569);
-            this.Controls.Add(this.panelCartesianPlot);
             this.Controls.Add(this.groupBoxTask);
+            this.Controls.Add(this.groupBoxPlot);
+            this.Controls.Add(this.groupBoxParameters);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FormPlot";
             this.Text = "Plot";
@@ -254,8 +241,6 @@
             this.groupBoxPlot.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).EndInit();
             this.groupBoxTask.ResumeLayout(false);
-            this.panelCartesianPlot.ResumeLayout(false);
-            this.panelCartesianPlot.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,7 +265,6 @@
         private System.Windows.Forms.PictureBox pictureBoxPlot;
         private System.Windows.Forms.ListBox listBoxTask;
         private CustomizedToolTip customizedToolTipDrawPlot;
-        private System.Windows.Forms.Panel panelCartesianPlot;
     }
 }
 
