@@ -28,192 +28,336 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBoxParameters = new System.Windows.Forms.GroupBox();
-            this.textBoxC = new System.Windows.Forms.TextBox();
-            this.labelC = new System.Windows.Forms.Label();
-            this.buttonDrawPlot = new System.Windows.Forms.Button();
-            this.textBoxBeta = new System.Windows.Forms.TextBox();
-            this.labelBeta = new System.Windows.Forms.Label();
-            this.textBoxAlpha = new System.Windows.Forms.TextBox();
-            this.labelAlpha = new System.Windows.Forms.Label();
-            this.textBoxB = new System.Windows.Forms.TextBox();
-            this.textBoxA = new System.Windows.Forms.TextBox();
-            this.labelB = new System.Windows.Forms.Label();
-            this.labelA = new System.Windows.Forms.Label();
-            this.groupBoxPlot = new System.Windows.Forms.GroupBox();
-            this.pictureBoxPlot = new System.Windows.Forms.PictureBox();
-            this.groupBoxTask = new System.Windows.Forms.GroupBox();
-            this.listBoxTask = new System.Windows.Forms.ListBox();
+            this.groupBoxCartesianPlotParameters = new System.Windows.Forms.GroupBox();
+            this.textBoxCartesianPlotC = new System.Windows.Forms.TextBox();
+            this.labelCartesianPlotC = new System.Windows.Forms.Label();
+            this.buttonDrawCartesianPlot = new System.Windows.Forms.Button();
+            this.textBoxCartesianPlotBeta = new System.Windows.Forms.TextBox();
+            this.labelCartesianPlotBeta = new System.Windows.Forms.Label();
+            this.textBoxCartesianPlotAlpha = new System.Windows.Forms.TextBox();
+            this.labelCartesianPlotAlpha = new System.Windows.Forms.Label();
+            this.textBoxCartesianPlotB = new System.Windows.Forms.TextBox();
+            this.textBoxCartesianPlotA = new System.Windows.Forms.TextBox();
+            this.labelCartesianPlotB = new System.Windows.Forms.Label();
+            this.labelCartesianPlotA = new System.Windows.Forms.Label();
+            this.groupBoxCartesianPlot = new System.Windows.Forms.GroupBox();
+            this.pictureBoxCartesianPlot = new System.Windows.Forms.PictureBox();
+            this.tabControlPlot = new System.Windows.Forms.TabControl();
+            this.tabPageCartesianPlot = new System.Windows.Forms.TabPage();
+            this.tabPagePolarPlot = new System.Windows.Forms.TabPage();
+            this.groupBoxPolarPlot = new System.Windows.Forms.GroupBox();
+            this.pictureBoxPolarPlot = new System.Windows.Forms.PictureBox();
+            this.groupBoxPolarPlotParameters = new System.Windows.Forms.GroupBox();
+            this.buttonDrawPolarPlot = new System.Windows.Forms.Button();
+            this.textBoxPolarPlotBeta = new System.Windows.Forms.TextBox();
+            this.textBoxPolarPlotAlpha = new System.Windows.Forms.TextBox();
+            this.labelPolarPlotBeta = new System.Windows.Forms.Label();
+            this.labelPolarPlotAlpha = new System.Windows.Forms.Label();
+            this.tabPageBresenham = new System.Windows.Forms.TabPage();
+            this.groupBoxBresenhamParameters = new System.Windows.Forms.GroupBox();
+            this.labelBresenhamP = new System.Windows.Forms.Label();
+            this.textBoxBresenhamP = new System.Windows.Forms.TextBox();
             this.customizedToolTipDrawPlot = new KGG_1.CustomizedToolTip();
-            this.groupBoxParameters.SuspendLayout();
-            this.groupBoxPlot.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).BeginInit();
-            this.groupBoxTask.SuspendLayout();
+            this.groupBoxCartesianPlotParameters.SuspendLayout();
+            this.groupBoxCartesianPlot.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCartesianPlot)).BeginInit();
+            this.tabControlPlot.SuspendLayout();
+            this.tabPageCartesianPlot.SuspendLayout();
+            this.tabPagePolarPlot.SuspendLayout();
+            this.groupBoxPolarPlot.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPolarPlot)).BeginInit();
+            this.groupBoxPolarPlotParameters.SuspendLayout();
+            this.tabPageBresenham.SuspendLayout();
+            this.groupBoxBresenhamParameters.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBoxParameters
+            // groupBoxCartesianPlotParameters
             // 
-            this.groupBoxParameters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBoxCartesianPlotParameters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxParameters.AutoSize = true;
-            this.groupBoxParameters.Controls.Add(this.textBoxC);
-            this.groupBoxParameters.Controls.Add(this.labelC);
-            this.groupBoxParameters.Controls.Add(this.buttonDrawPlot);
-            this.groupBoxParameters.Controls.Add(this.textBoxBeta);
-            this.groupBoxParameters.Controls.Add(this.labelBeta);
-            this.groupBoxParameters.Controls.Add(this.textBoxAlpha);
-            this.groupBoxParameters.Controls.Add(this.labelAlpha);
-            this.groupBoxParameters.Controls.Add(this.textBoxB);
-            this.groupBoxParameters.Controls.Add(this.textBoxA);
-            this.groupBoxParameters.Controls.Add(this.labelB);
-            this.groupBoxParameters.Controls.Add(this.labelA);
-            this.groupBoxParameters.Location = new System.Drawing.Point(213, 13);
-            this.groupBoxParameters.Name = "groupBoxParameters";
-            this.groupBoxParameters.Size = new System.Drawing.Size(565, 57);
-            this.groupBoxParameters.TabIndex = 1;
-            this.groupBoxParameters.TabStop = false;
-            this.groupBoxParameters.Text = "Введите параметры";
+            this.groupBoxCartesianPlotParameters.AutoSize = true;
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.textBoxCartesianPlotC);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.labelCartesianPlotC);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.buttonDrawCartesianPlot);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.textBoxCartesianPlotBeta);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.labelCartesianPlotBeta);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.textBoxCartesianPlotAlpha);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.labelCartesianPlotAlpha);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.textBoxCartesianPlotB);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.textBoxCartesianPlotA);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.labelCartesianPlotB);
+            this.groupBoxCartesianPlotParameters.Controls.Add(this.labelCartesianPlotA);
+            this.groupBoxCartesianPlotParameters.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxCartesianPlotParameters.Name = "groupBoxCartesianPlotParameters";
+            this.groupBoxCartesianPlotParameters.Size = new System.Drawing.Size(740, 57);
+            this.groupBoxCartesianPlotParameters.TabIndex = 1;
+            this.groupBoxCartesianPlotParameters.TabStop = false;
+            this.groupBoxCartesianPlotParameters.Text = "Введите параметры";
             // 
-            // textBoxC
+            // textBoxCartesianPlotC
             // 
-            this.textBoxC.Location = new System.Drawing.Point(188, 17);
-            this.textBoxC.Name = "textBoxC";
-            this.textBoxC.Size = new System.Drawing.Size(50, 20);
-            this.textBoxC.TabIndex = 3;
+            this.textBoxCartesianPlotC.Location = new System.Drawing.Point(188, 17);
+            this.textBoxCartesianPlotC.Name = "textBoxCartesianPlotC";
+            this.textBoxCartesianPlotC.Size = new System.Drawing.Size(50, 20);
+            this.textBoxCartesianPlotC.TabIndex = 3;
             // 
-            // labelC
+            // labelCartesianPlotC
             // 
-            this.labelC.AutoSize = true;
-            this.labelC.Location = new System.Drawing.Point(165, 20);
-            this.labelC.Name = "labelC";
-            this.labelC.Size = new System.Drawing.Size(17, 13);
-            this.labelC.TabIndex = 0;
-            this.labelC.Text = "C:";
+            this.labelCartesianPlotC.AutoSize = true;
+            this.labelCartesianPlotC.Location = new System.Drawing.Point(165, 20);
+            this.labelCartesianPlotC.Name = "labelCartesianPlotC";
+            this.labelCartesianPlotC.Size = new System.Drawing.Size(17, 13);
+            this.labelCartesianPlotC.TabIndex = 0;
+            this.labelCartesianPlotC.Text = "C:";
             // 
-            // buttonDrawPlot
+            // buttonDrawCartesianPlot
             // 
-            this.buttonDrawPlot.Location = new System.Drawing.Point(401, 15);
-            this.buttonDrawPlot.Name = "buttonDrawPlot";
-            this.buttonDrawPlot.Size = new System.Drawing.Size(158, 23);
-            this.buttonDrawPlot.TabIndex = 6;
-            this.buttonDrawPlot.Text = "Построить график";
-            this.customizedToolTipDrawPlot.SetToolTip(this.buttonDrawPlot, "Функция");
-            this.buttonDrawPlot.UseVisualStyleBackColor = true;
-            this.buttonDrawPlot.Click += new System.EventHandler(this.buttonDrawPlot_Click);
+            this.buttonDrawCartesianPlot.Location = new System.Drawing.Point(401, 15);
+            this.buttonDrawCartesianPlot.Name = "buttonDrawCartesianPlot";
+            this.buttonDrawCartesianPlot.Size = new System.Drawing.Size(158, 23);
+            this.buttonDrawCartesianPlot.TabIndex = 6;
+            this.buttonDrawCartesianPlot.Text = "Построить график";
+            this.customizedToolTipDrawPlot.SetToolTip(this.buttonDrawCartesianPlot, "Функция");
+            this.buttonDrawCartesianPlot.UseVisualStyleBackColor = true;
+            this.buttonDrawCartesianPlot.Click += new System.EventHandler(this.buttonDrawCartesianPlot_Click);
             // 
-            // textBoxBeta
+            // textBoxCartesianPlotBeta
             // 
-            this.textBoxBeta.Location = new System.Drawing.Point(345, 17);
-            this.textBoxBeta.Name = "textBoxBeta";
-            this.textBoxBeta.Size = new System.Drawing.Size(50, 20);
-            this.textBoxBeta.TabIndex = 5;
+            this.textBoxCartesianPlotBeta.Location = new System.Drawing.Point(345, 17);
+            this.textBoxCartesianPlotBeta.Name = "textBoxCartesianPlotBeta";
+            this.textBoxCartesianPlotBeta.Size = new System.Drawing.Size(50, 20);
+            this.textBoxCartesianPlotBeta.TabIndex = 5;
             // 
-            // labelBeta
+            // labelCartesianPlotBeta
             // 
-            this.labelBeta.AutoSize = true;
-            this.labelBeta.Location = new System.Drawing.Point(323, 20);
-            this.labelBeta.Name = "labelBeta";
-            this.labelBeta.Size = new System.Drawing.Size(16, 13);
-            this.labelBeta.TabIndex = 0;
-            this.labelBeta.Text = "β:";
+            this.labelCartesianPlotBeta.AutoSize = true;
+            this.labelCartesianPlotBeta.Location = new System.Drawing.Point(323, 20);
+            this.labelCartesianPlotBeta.Name = "labelCartesianPlotBeta";
+            this.labelCartesianPlotBeta.Size = new System.Drawing.Size(16, 13);
+            this.labelCartesianPlotBeta.TabIndex = 0;
+            this.labelCartesianPlotBeta.Text = "β:";
             // 
-            // textBoxAlpha
+            // textBoxCartesianPlotAlpha
             // 
-            this.textBoxAlpha.Location = new System.Drawing.Point(267, 17);
-            this.textBoxAlpha.Name = "textBoxAlpha";
-            this.textBoxAlpha.Size = new System.Drawing.Size(50, 20);
-            this.textBoxAlpha.TabIndex = 4;
+            this.textBoxCartesianPlotAlpha.Location = new System.Drawing.Point(267, 17);
+            this.textBoxCartesianPlotAlpha.Name = "textBoxCartesianPlotAlpha";
+            this.textBoxCartesianPlotAlpha.Size = new System.Drawing.Size(50, 20);
+            this.textBoxCartesianPlotAlpha.TabIndex = 4;
             // 
-            // labelAlpha
+            // labelCartesianPlotAlpha
             // 
-            this.labelAlpha.AutoSize = true;
-            this.labelAlpha.Location = new System.Drawing.Point(244, 20);
-            this.labelAlpha.Name = "labelAlpha";
-            this.labelAlpha.Size = new System.Drawing.Size(17, 13);
-            this.labelAlpha.TabIndex = 0;
-            this.labelAlpha.Text = "α:";
+            this.labelCartesianPlotAlpha.AutoSize = true;
+            this.labelCartesianPlotAlpha.Location = new System.Drawing.Point(244, 20);
+            this.labelCartesianPlotAlpha.Name = "labelCartesianPlotAlpha";
+            this.labelCartesianPlotAlpha.Size = new System.Drawing.Size(17, 13);
+            this.labelCartesianPlotAlpha.TabIndex = 0;
+            this.labelCartesianPlotAlpha.Text = "α:";
             // 
-            // textBoxB
+            // textBoxCartesianPlotB
             // 
-            this.textBoxB.Location = new System.Drawing.Point(109, 17);
-            this.textBoxB.Name = "textBoxB";
-            this.textBoxB.Size = new System.Drawing.Size(50, 20);
-            this.textBoxB.TabIndex = 2;
+            this.textBoxCartesianPlotB.Location = new System.Drawing.Point(109, 17);
+            this.textBoxCartesianPlotB.Name = "textBoxCartesianPlotB";
+            this.textBoxCartesianPlotB.Size = new System.Drawing.Size(50, 20);
+            this.textBoxCartesianPlotB.TabIndex = 2;
             // 
-            // textBoxA
+            // textBoxCartesianPlotA
             // 
-            this.textBoxA.Location = new System.Drawing.Point(30, 17);
-            this.textBoxA.Name = "textBoxA";
-            this.textBoxA.Size = new System.Drawing.Size(50, 20);
-            this.textBoxA.TabIndex = 1;
+            this.textBoxCartesianPlotA.Location = new System.Drawing.Point(30, 17);
+            this.textBoxCartesianPlotA.Name = "textBoxCartesianPlotA";
+            this.textBoxCartesianPlotA.Size = new System.Drawing.Size(50, 20);
+            this.textBoxCartesianPlotA.TabIndex = 1;
             // 
-            // labelB
+            // labelCartesianPlotB
             // 
-            this.labelB.AutoSize = true;
-            this.labelB.Location = new System.Drawing.Point(86, 20);
-            this.labelB.Name = "labelB";
-            this.labelB.Size = new System.Drawing.Size(17, 13);
-            this.labelB.TabIndex = 0;
-            this.labelB.Text = "B:";
+            this.labelCartesianPlotB.AutoSize = true;
+            this.labelCartesianPlotB.Location = new System.Drawing.Point(86, 20);
+            this.labelCartesianPlotB.Name = "labelCartesianPlotB";
+            this.labelCartesianPlotB.Size = new System.Drawing.Size(17, 13);
+            this.labelCartesianPlotB.TabIndex = 0;
+            this.labelCartesianPlotB.Text = "B:";
             // 
-            // labelA
+            // labelCartesianPlotA
             // 
-            this.labelA.AutoSize = true;
-            this.labelA.Location = new System.Drawing.Point(7, 20);
-            this.labelA.Name = "labelA";
-            this.labelA.Size = new System.Drawing.Size(17, 13);
-            this.labelA.TabIndex = 0;
-            this.labelA.Text = "A:";
+            this.labelCartesianPlotA.AutoSize = true;
+            this.labelCartesianPlotA.Location = new System.Drawing.Point(7, 20);
+            this.labelCartesianPlotA.Name = "labelCartesianPlotA";
+            this.labelCartesianPlotA.Size = new System.Drawing.Size(17, 13);
+            this.labelCartesianPlotA.TabIndex = 0;
+            this.labelCartesianPlotA.Text = "A:";
             // 
-            // groupBoxPlot
+            // groupBoxCartesianPlot
             // 
-            this.groupBoxPlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.groupBoxCartesianPlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxPlot.AutoSize = true;
-            this.groupBoxPlot.Controls.Add(this.pictureBoxPlot);
-            this.groupBoxPlot.Location = new System.Drawing.Point(213, 77);
-            this.groupBoxPlot.Name = "groupBoxPlot";
-            this.groupBoxPlot.Size = new System.Drawing.Size(562, 483);
-            this.groupBoxPlot.TabIndex = 2;
-            this.groupBoxPlot.TabStop = false;
-            this.groupBoxPlot.Text = "График";
+            this.groupBoxCartesianPlot.AutoSize = true;
+            this.groupBoxCartesianPlot.Controls.Add(this.pictureBoxCartesianPlot);
+            this.groupBoxCartesianPlot.Location = new System.Drawing.Point(6, 69);
+            this.groupBoxCartesianPlot.Name = "groupBoxCartesianPlot";
+            this.groupBoxCartesianPlot.Size = new System.Drawing.Size(740, 534);
+            this.groupBoxCartesianPlot.TabIndex = 2;
+            this.groupBoxCartesianPlot.TabStop = false;
+            this.groupBoxCartesianPlot.Text = "График";
             // 
-            // pictureBoxPlot
+            // pictureBoxCartesianPlot
             // 
-            this.pictureBoxPlot.BackColor = System.Drawing.Color.White;
-            this.pictureBoxPlot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxPlot.Location = new System.Drawing.Point(3, 16);
-            this.pictureBoxPlot.Name = "pictureBoxPlot";
-            this.pictureBoxPlot.Size = new System.Drawing.Size(556, 464);
-            this.pictureBoxPlot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPlot.TabIndex = 0;
-            this.pictureBoxPlot.TabStop = false;
-            this.pictureBoxPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxPlot_Paint);
+            this.pictureBoxCartesianPlot.BackColor = System.Drawing.Color.White;
+            this.pictureBoxCartesianPlot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxCartesianPlot.Location = new System.Drawing.Point(3, 16);
+            this.pictureBoxCartesianPlot.Name = "pictureBoxCartesianPlot";
+            this.pictureBoxCartesianPlot.Size = new System.Drawing.Size(734, 515);
+            this.pictureBoxCartesianPlot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCartesianPlot.TabIndex = 0;
+            this.pictureBoxCartesianPlot.TabStop = false;
+            this.pictureBoxCartesianPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxCartesianPlot_Paint);
             // 
-            // groupBoxTask
+            // tabControlPlot
             // 
-            this.groupBoxTask.Controls.Add(this.listBoxTask);
-            this.groupBoxTask.Location = new System.Drawing.Point(13, 13);
-            this.groupBoxTask.Name = "groupBoxTask";
-            this.groupBoxTask.Size = new System.Drawing.Size(194, 550);
-            this.groupBoxTask.TabIndex = 3;
-            this.groupBoxTask.TabStop = false;
-            this.groupBoxTask.Text = "Выбор задачи";
+            this.tabControlPlot.Controls.Add(this.tabPageCartesianPlot);
+            this.tabControlPlot.Controls.Add(this.tabPagePolarPlot);
+            this.tabControlPlot.Controls.Add(this.tabPageBresenham);
+            this.tabControlPlot.Location = new System.Drawing.Point(8, 5);
+            this.tabControlPlot.Name = "tabControlPlot";
+            this.tabControlPlot.SelectedIndex = 0;
+            this.tabControlPlot.Size = new System.Drawing.Size(769, 642);
+            this.tabControlPlot.TabIndex = 3;
             // 
-            // listBoxTask
+            // tabPageCartesianPlot
             // 
-            this.listBoxTask.FormattingEnabled = true;
-            this.listBoxTask.Items.AddRange(new object[] {
-            "График функции",
-            "Алгоритм Брезенхема",
-            "Многоугольники",
-            "График поверхности",
-            "Удаление невидимых линий"});
-            this.listBoxTask.Location = new System.Drawing.Point(6, 19);
-            this.listBoxTask.Name = "listBoxTask";
-            this.listBoxTask.Size = new System.Drawing.Size(182, 524);
-            this.listBoxTask.TabIndex = 0;
+            this.tabPageCartesianPlot.Controls.Add(this.groupBoxCartesianPlotParameters);
+            this.tabPageCartesianPlot.Controls.Add(this.groupBoxCartesianPlot);
+            this.tabPageCartesianPlot.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCartesianPlot.Name = "tabPageCartesianPlot";
+            this.tabPageCartesianPlot.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCartesianPlot.Size = new System.Drawing.Size(761, 616);
+            this.tabPageCartesianPlot.TabIndex = 0;
+            this.tabPageCartesianPlot.Text = "График функции";
+            this.tabPageCartesianPlot.UseVisualStyleBackColor = true;
+            // 
+            // tabPagePolarPlot
+            // 
+            this.tabPagePolarPlot.Controls.Add(this.groupBoxPolarPlot);
+            this.tabPagePolarPlot.Controls.Add(this.groupBoxPolarPlotParameters);
+            this.tabPagePolarPlot.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePolarPlot.Name = "tabPagePolarPlot";
+            this.tabPagePolarPlot.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePolarPlot.Size = new System.Drawing.Size(761, 616);
+            this.tabPagePolarPlot.TabIndex = 1;
+            this.tabPagePolarPlot.Text = "Полярные координаты";
+            this.tabPagePolarPlot.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxPolarPlot
+            // 
+            this.groupBoxPolarPlot.Controls.Add(this.pictureBoxPolarPlot);
+            this.groupBoxPolarPlot.Location = new System.Drawing.Point(7, 61);
+            this.groupBoxPolarPlot.Name = "groupBoxPolarPlot";
+            this.groupBoxPolarPlot.Size = new System.Drawing.Size(542, 552);
+            this.groupBoxPolarPlot.TabIndex = 1;
+            this.groupBoxPolarPlot.TabStop = false;
+            this.groupBoxPolarPlot.Text = "График";
+            // 
+            // pictureBoxPolarPlot
+            // 
+            this.pictureBoxPolarPlot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxPolarPlot.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxPolarPlot.Name = "pictureBoxPolarPlot";
+            this.pictureBoxPolarPlot.Size = new System.Drawing.Size(530, 530);
+            this.pictureBoxPolarPlot.TabIndex = 0;
+            this.pictureBoxPolarPlot.TabStop = false;
+            this.pictureBoxPolarPlot.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxPolarPlot_Paint);
+            // 
+            // groupBoxPolarPlotParameters
+            // 
+            this.groupBoxPolarPlotParameters.Controls.Add(this.buttonDrawPolarPlot);
+            this.groupBoxPolarPlotParameters.Controls.Add(this.textBoxPolarPlotBeta);
+            this.groupBoxPolarPlotParameters.Controls.Add(this.textBoxPolarPlotAlpha);
+            this.groupBoxPolarPlotParameters.Controls.Add(this.labelPolarPlotBeta);
+            this.groupBoxPolarPlotParameters.Controls.Add(this.labelPolarPlotAlpha);
+            this.groupBoxPolarPlotParameters.Location = new System.Drawing.Point(7, 7);
+            this.groupBoxPolarPlotParameters.Name = "groupBoxPolarPlotParameters";
+            this.groupBoxPolarPlotParameters.Size = new System.Drawing.Size(748, 47);
+            this.groupBoxPolarPlotParameters.TabIndex = 0;
+            this.groupBoxPolarPlotParameters.TabStop = false;
+            this.groupBoxPolarPlotParameters.Text = "Параметры";
+            // 
+            // buttonDrawPolarPlot
+            // 
+            this.buttonDrawPolarPlot.Location = new System.Drawing.Point(188, 15);
+            this.buttonDrawPolarPlot.Name = "buttonDrawPolarPlot";
+            this.buttonDrawPolarPlot.Size = new System.Drawing.Size(120, 23);
+            this.buttonDrawPolarPlot.TabIndex = 4;
+            this.buttonDrawPolarPlot.Text = "Построить график";
+            this.buttonDrawPolarPlot.UseVisualStyleBackColor = true;
+            this.buttonDrawPolarPlot.Click += new System.EventHandler(this.buttonDrawPolarPlot_Click);
+            // 
+            // textBoxPolarPlotBeta
+            // 
+            this.textBoxPolarPlotBeta.Location = new System.Drawing.Point(113, 17);
+            this.textBoxPolarPlotBeta.Name = "textBoxPolarPlotBeta";
+            this.textBoxPolarPlotBeta.Size = new System.Drawing.Size(55, 20);
+            this.textBoxPolarPlotBeta.TabIndex = 3;
+            // 
+            // textBoxPolarPlotAlpha
+            // 
+            this.textBoxPolarPlotAlpha.Location = new System.Drawing.Point(30, 17);
+            this.textBoxPolarPlotAlpha.Name = "textBoxPolarPlotAlpha";
+            this.textBoxPolarPlotAlpha.Size = new System.Drawing.Size(55, 20);
+            this.textBoxPolarPlotAlpha.TabIndex = 2;
+            // 
+            // labelPolarPlotBeta
+            // 
+            this.labelPolarPlotBeta.AutoSize = true;
+            this.labelPolarPlotBeta.Location = new System.Drawing.Point(91, 20);
+            this.labelPolarPlotBeta.Name = "labelPolarPlotBeta";
+            this.labelPolarPlotBeta.Size = new System.Drawing.Size(16, 13);
+            this.labelPolarPlotBeta.TabIndex = 1;
+            this.labelPolarPlotBeta.Text = "β:";
+            // 
+            // labelPolarPlotAlpha
+            // 
+            this.labelPolarPlotAlpha.AutoSize = true;
+            this.labelPolarPlotAlpha.Location = new System.Drawing.Point(7, 20);
+            this.labelPolarPlotAlpha.Name = "labelPolarPlotAlpha";
+            this.labelPolarPlotAlpha.Size = new System.Drawing.Size(17, 13);
+            this.labelPolarPlotAlpha.TabIndex = 0;
+            this.labelPolarPlotAlpha.Text = "α:";
+            // 
+            // tabPageBresenham
+            // 
+            this.tabPageBresenham.Controls.Add(this.groupBoxBresenhamParameters);
+            this.tabPageBresenham.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBresenham.Name = "tabPageBresenham";
+            this.tabPageBresenham.Size = new System.Drawing.Size(761, 616);
+            this.tabPageBresenham.TabIndex = 2;
+            this.tabPageBresenham.Text = "Алгоритм Брезенхема";
+            this.tabPageBresenham.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxBresenhamParameters
+            // 
+            this.groupBoxBresenhamParameters.Controls.Add(this.textBoxBresenhamP);
+            this.groupBoxBresenhamParameters.Controls.Add(this.labelBresenhamP);
+            this.groupBoxBresenhamParameters.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxBresenhamParameters.Name = "groupBoxBresenhamParameters";
+            this.groupBoxBresenhamParameters.Size = new System.Drawing.Size(362, 100);
+            this.groupBoxBresenhamParameters.TabIndex = 0;
+            this.groupBoxBresenhamParameters.TabStop = false;
+            this.groupBoxBresenhamParameters.Text = "Параметры";
+            // 
+            // labelBresenhamP
+            // 
+            this.labelBresenhamP.AutoSize = true;
+            this.labelBresenhamP.Location = new System.Drawing.Point(6, 16);
+            this.labelBresenhamP.Name = "labelBresenhamP";
+            this.labelBresenhamP.Size = new System.Drawing.Size(16, 13);
+            this.labelBresenhamP.TabIndex = 0;
+            this.labelBresenhamP.Text = "p:";
+            // 
+            // textBoxBresenhamP
+            // 
+            this.textBoxBresenhamP.Location = new System.Drawing.Point(28, 13);
+            this.textBoxBresenhamP.Name = "textBoxBresenhamP";
+            this.textBoxBresenhamP.Size = new System.Drawing.Size(55, 20);
+            this.textBoxBresenhamP.TabIndex = 1;
             // 
             // customizedToolTipDrawPlot
             // 
@@ -229,42 +373,62 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 569);
-            this.Controls.Add(this.groupBoxTask);
-            this.Controls.Add(this.groupBoxPlot);
-            this.Controls.Add(this.groupBoxParameters);
+            this.ClientSize = new System.Drawing.Size(784, 659);
+            this.Controls.Add(this.tabControlPlot);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "FormPlot";
             this.Text = "Plot";
-            this.groupBoxParameters.ResumeLayout(false);
-            this.groupBoxParameters.PerformLayout();
-            this.groupBoxPlot.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlot)).EndInit();
-            this.groupBoxTask.ResumeLayout(false);
+            this.groupBoxCartesianPlotParameters.ResumeLayout(false);
+            this.groupBoxCartesianPlotParameters.PerformLayout();
+            this.groupBoxCartesianPlot.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCartesianPlot)).EndInit();
+            this.tabControlPlot.ResumeLayout(false);
+            this.tabPageCartesianPlot.ResumeLayout(false);
+            this.tabPageCartesianPlot.PerformLayout();
+            this.tabPagePolarPlot.ResumeLayout(false);
+            this.groupBoxPolarPlot.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPolarPlot)).EndInit();
+            this.groupBoxPolarPlotParameters.ResumeLayout(false);
+            this.groupBoxPolarPlotParameters.PerformLayout();
+            this.tabPageBresenham.ResumeLayout(false);
+            this.groupBoxBresenhamParameters.ResumeLayout(false);
+            this.groupBoxBresenhamParameters.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBoxParameters;
-        private System.Windows.Forms.TextBox textBoxB;
-        private System.Windows.Forms.TextBox textBoxA;
-        private System.Windows.Forms.Label labelB;
-        private System.Windows.Forms.Label labelA;
-        private System.Windows.Forms.TextBox textBoxC;
-        private System.Windows.Forms.Label labelC;
-        private System.Windows.Forms.Button buttonDrawPlot;
-        private System.Windows.Forms.TextBox textBoxBeta;
-        private System.Windows.Forms.Label labelBeta;
-        private System.Windows.Forms.TextBox textBoxAlpha;
-        private System.Windows.Forms.Label labelAlpha;
-        private System.Windows.Forms.GroupBox groupBoxPlot;
-        private System.Windows.Forms.GroupBox groupBoxTask;
-        private System.Windows.Forms.PictureBox pictureBoxPlot;
-        private System.Windows.Forms.ListBox listBoxTask;
+        private System.Windows.Forms.GroupBox groupBoxCartesianPlotParameters;
+        private System.Windows.Forms.TextBox textBoxCartesianPlotB;
+        private System.Windows.Forms.TextBox textBoxCartesianPlotA;
+        private System.Windows.Forms.Label labelCartesianPlotB;
+        private System.Windows.Forms.Label labelCartesianPlotA;
+        private System.Windows.Forms.TextBox textBoxCartesianPlotC;
+        private System.Windows.Forms.Label labelCartesianPlotC;
+        private System.Windows.Forms.Button buttonDrawCartesianPlot;
+        private System.Windows.Forms.TextBox textBoxCartesianPlotBeta;
+        private System.Windows.Forms.Label labelCartesianPlotBeta;
+        private System.Windows.Forms.TextBox textBoxCartesianPlotAlpha;
+        private System.Windows.Forms.Label labelCartesianPlotAlpha;
+        private System.Windows.Forms.GroupBox groupBoxCartesianPlot;
+        private System.Windows.Forms.PictureBox pictureBoxCartesianPlot;
         private CustomizedToolTip customizedToolTipDrawPlot;
+        private System.Windows.Forms.TabControl tabControlPlot;
+        private System.Windows.Forms.TabPage tabPageCartesianPlot;
+        private System.Windows.Forms.TabPage tabPagePolarPlot;
+        private System.Windows.Forms.TabPage tabPageBresenham;
+        private System.Windows.Forms.GroupBox groupBoxPolarPlotParameters;
+        private System.Windows.Forms.Button buttonDrawPolarPlot;
+        private System.Windows.Forms.TextBox textBoxPolarPlotBeta;
+        private System.Windows.Forms.TextBox textBoxPolarPlotAlpha;
+        private System.Windows.Forms.Label labelPolarPlotBeta;
+        private System.Windows.Forms.Label labelPolarPlotAlpha;
+        private System.Windows.Forms.GroupBox groupBoxPolarPlot;
+        private System.Windows.Forms.PictureBox pictureBoxPolarPlot;
+        private System.Windows.Forms.GroupBox groupBoxBresenhamParameters;
+        private System.Windows.Forms.TextBox textBoxBresenhamP;
+        private System.Windows.Forms.Label labelBresenhamP;
     }
 }
 

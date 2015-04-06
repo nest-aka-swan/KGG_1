@@ -8,41 +8,52 @@ namespace KGG_1
 {
     public partial class FormPlot : Form
     {
-        private int A, B, C, Alpha, Beta;
+        private int CartesianPlotA, CartesianPlotB, CartesianPlotC, CartesianPlotAlpha, CartesianPlotBeta;
+        private double PPAlpha, PPBeta;
+        System.Globalization.NumberFormatInfo fmt = new System.Globalization.NumberFormatInfo();
         public FormPlot()
         {
             InitializeComponent();
 
+            // по умолчанию полярные
+            tabControlPlot.SelectedTab = tabPagePolarPlot;
+
+            // Чтобы парсить отрицательные
+            fmt.NegativeSign = "-";
+
             // Тултип с функцией
-            buttonDrawPlot.Tag = Resources.Task1Function;
+            buttonDrawCartesianPlot.Tag = Resources.Task1Function;
 
             // Значения по умолчанию
-            textBoxA.Text = "1";
-            textBoxB.Text = "-3";
-            textBoxC.Text = "1";
-            textBoxAlpha.Text = "-5";
-            textBoxBeta.Text = "5";
+            textBoxCartesianPlotA.Text = "1";
+            textBoxCartesianPlotB.Text = "-3";
+            textBoxCartesianPlotC.Text = "1";
+            textBoxCartesianPlotAlpha.Text = "-5";
+            textBoxCartesianPlotBeta.Text = "5";
 
-            InitCoefficients();
+            textBoxPolarPlotAlpha.Text = "-15.708";
+            textBoxPolarPlotBeta.Text = "15.708";
+
+            InitCoefficientsPlot();
         }
 
-        private void buttonDrawPlot_Click(object sender, EventArgs e)
+        private void buttonDrawCartesianPlot_Click(object sender, EventArgs e)
         {
-            InitCoefficients();
-            pictureBoxPlot.Invalidate();
+            InitCoefficientsPlot();
+            pictureBoxCartesianPlot.Invalidate();
         }
 
-        private void pictureBoxPlot_Paint(object sender, PaintEventArgs e)
+        private void pictureBoxCartesianPlot_Paint(object sender, PaintEventArgs e)
         {
-            int maxX = pictureBoxPlot.Width;
-            int maxY = pictureBoxPlot.Height;
+            int maxX = pictureBoxCartesianPlot.Width;
+            int maxY = pictureBoxCartesianPlot.Height;
 
             int centerY; // пиксель по x в котором рисовать ось oy
-            if (Alpha < 0 && Beta > 0)
+            if (CartesianPlotAlpha < 0 && CartesianPlotBeta > 0)
             {
-                centerY = -Alpha * maxX/(Beta - Alpha);
+                centerY = -CartesianPlotAlpha * maxX/(CartesianPlotBeta - CartesianPlotAlpha);
             }
-            else if(Alpha >= 0 && Beta > 0)
+            else if(CartesianPlotAlpha >= 0 && CartesianPlotBeta > 0)
             {
                 centerY = 0;
             }
@@ -51,7 +62,7 @@ namespace KGG_1
                 centerY = maxX - 1;
             }
             int centerX = maxY / 2; // пиксель по y в котором рисовать ось ox
-            int partWidth = maxX / (Beta - Alpha);
+            int partWidth = maxX / (CartesianPlotBeta - CartesianPlotAlpha);
             //сетка
             var font = new Font("Arial", 16);
             var brush = new SolidBrush(Color.Black);
@@ -100,13 +111,13 @@ namespace KGG_1
             //нарисовать оси, вычислив центр
             for(int xx = 0; xx < maxX; ++xx)
             {
-                x = Alpha + (double)(xx * (Beta - Alpha))/(double)maxX;
-                denominator = (B + x) * (C - x) * (C - x);
+                x = CartesianPlotAlpha + (double)(xx * (CartesianPlotBeta - CartesianPlotAlpha))/(double)maxX;
+                denominator = (CartesianPlotB + x) * (CartesianPlotC - x) * (CartesianPlotC - x);
 
                 if(Math.Abs(denominator) > 0.000001)
                 {
-                    y = A * x / denominator;
-                    yyDouble = maxY - y * (maxY / (double)(Math.Abs(Beta) + Math.Abs(Alpha)));
+                    y = CartesianPlotA * x / denominator;
+                    yyDouble = maxY - y * (maxY / (double)(Math.Abs(CartesianPlotBeta) + Math.Abs(CartesianPlotAlpha)));
                     yyDouble -= centerX;
                     yy = Convert.ToInt32(yyDouble);
                     if(!(xxPrev == 0) && !(yyPrev == 0))
@@ -119,31 +130,98 @@ namespace KGG_1
             }
         }
 
-        private void InitCoefficients()
+        private void InitCoefficientsPlot()
         {
-            A = Int32.Parse(textBoxA.Text);
-            B = Int32.Parse(textBoxB.Text);
-            C = Int32.Parse(textBoxC.Text);
-            Alpha = Int32.Parse(textBoxAlpha.Text);
-            Beta = Int32.Parse(textBoxBeta.Text);
+            CartesianPlotA = Int32.Parse(textBoxCartesianPlotA.Text);
+            CartesianPlotB = Int32.Parse(textBoxCartesianPlotB.Text);
+            CartesianPlotC = Int32.Parse(textBoxCartesianPlotC.Text);
+            CartesianPlotAlpha = Int32.Parse(textBoxCartesianPlotAlpha.Text);
+            CartesianPlotBeta = Int32.Parse(textBoxCartesianPlotBeta.Text);
+
+            PPAlpha = Double.Parse(textBoxPolarPlotAlpha.Text, fmt);
+            PPBeta = Double.Parse(textBoxPolarPlotBeta.Text, fmt);
         }
 
-        // двойной клик на пункт
-        //void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
-        //{
-        //    int index = this.listBox1.IndexFromPoint(e.Location);
-        //    if (index != System.Windows.Forms.ListBox.NoMatches)
-        //    {
-        //        MessageBox.Show(index.ToString());
-        //    }
-        //}
+        private void buttonDrawPolarPlot_Click(object sender, EventArgs e)
+        {
+            InitCoefficientsPlot();
+            pictureBoxPolarPlot.Invalidate();
+        }
 
-        //как скрывать элементы
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    groupbox1.Visible = true;
-        //    groupbox2.Visible = !groupbox1.Visible;
-        //    groupbox3..... = !groupbox1.Visible; //etc
-        //}
+        private void pictureBoxPolarPlot_Paint(object sender, PaintEventArgs e)
+        {
+            // экранные размеры полотна
+            int maxXX = pictureBoxPolarPlot.Width;
+            int maxYY = pictureBoxPolarPlot.Height;
+
+            double maxX = Double.MinValue, minX = Double.MaxValue;
+            double maxR = 2.6; // magic constant =)
+
+            var step = Math.PI / 360; // 0.5 градуса
+            var i = PPAlpha - step;
+            while(i <= PPBeta)
+            {
+                i += step;
+                var r = Math.Acos((i - 1) / (i * i));
+                if (r > maxR)
+                    continue;
+                var x = r * Math.Cos(i);
+                var y = r * Math.Sin(i);
+                if (x > maxX)
+                {
+                    maxX = x;
+                }  
+                if (x < minX)
+                {
+                    minX = x;
+                }
+            }
+            int xxPrev = (int)(((Math.Acos((PPAlpha - 1) / (PPAlpha * PPAlpha)) * Math.Cos(PPAlpha) - minX) * maxXX) / (maxX - minX));
+            int yyPrev = (int)(((Math.Acos((PPAlpha - 1) / (PPAlpha * PPAlpha)) * Math.Sin(PPAlpha) - minX) * maxYY) / (maxX - minX));
+
+            // оси и радиусы
+            int xxAxis = (int)((- maxX) * maxXX / (minX - maxX));
+            int yyAxis = (int)((- maxX) * maxYY / (minX - maxX));
+            MessageBox.Show(maxXX.ToString() +" "+ xxAxis.ToString() +" "+ maxYY.ToString() +" "+ yyAxis.ToString());
+            //e.Graphics.DrawEllipse()
+
+            e.Graphics.DrawLine(Pens.Blue, 0, yyAxis, maxXX, yyAxis);
+            e.Graphics.DrawLine(Pens.Blue, xxAxis, 0, xxAxis, maxYY);
+            
+            // считаем функцию
+            i = PPAlpha - step;
+            var gap = false;
+            var first = true;
+            while(i <= PPBeta)
+            {
+                i += step;
+                var r = Math.Acos((i - 1) / (i * i));
+                if (r > maxR)
+                {
+                    gap = true;
+                    continue;
+                }
+                var x = -r * Math.Cos(i);
+                var y = r * Math.Sin(i);
+                int xx = (int)((x - maxX) * maxXX / (minX - maxX));
+                int yy = (int)((y - maxX) * maxYY / (minX - maxX));
+                if(xx > maxXX || xx < 0 || yy < 0 || yy > maxYY)
+                {
+                    gap = true;
+                    continue;
+                }
+                if(gap)
+                {
+                    xxPrev = xx;
+                    yyPrev = yy;
+                    gap = false;
+                }
+                if(!first)
+                    e.Graphics.DrawLine(Pens.Red, xxPrev, yyPrev, xx, yy);
+                xxPrev = xx;
+                yyPrev = yy;
+                first = false;
+            }
+        }
     }
 }
