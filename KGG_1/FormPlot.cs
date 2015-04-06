@@ -9,8 +9,11 @@ namespace KGG_1
     public partial class FormPlot : Form
     {
         private int CartesianPlotA, CartesianPlotB, CartesianPlotC, CartesianPlotAlpha, CartesianPlotBeta;
+        
         private double PPAlpha, PPBeta;
         System.Globalization.NumberFormatInfo fmt = new System.Globalization.NumberFormatInfo();
+
+        private int BresP; // Bresenham P
         public FormPlot()
         {
             InitializeComponent();
@@ -33,6 +36,8 @@ namespace KGG_1
 
             textBoxPolarPlotAlpha.Text = "-15.708";
             textBoxPolarPlotBeta.Text = "15.708";
+
+            textBoxBresenhamP.Text = "2";
 
             InitCoefficientsPlot();
         }
@@ -140,6 +145,8 @@ namespace KGG_1
 
             PPAlpha = Double.Parse(textBoxPolarPlotAlpha.Text, fmt);
             PPBeta = Double.Parse(textBoxPolarPlotBeta.Text, fmt);
+
+            BresP = Int32.Parse(textBoxBresenhamP.Text);
         }
 
         private void buttonDrawPolarPlot_Click(object sender, EventArgs e)
@@ -232,7 +239,9 @@ namespace KGG_1
 
         private void pictureBoxBresenham_Paint(object sender, PaintEventArgs e)
         {
-
+            int maxXX = pictureBoxBresenham.Width;
+            int maxYY = pictureBoxBresenham.Height;
+            //
         }
     }
 }
