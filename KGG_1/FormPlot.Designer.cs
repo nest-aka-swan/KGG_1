@@ -55,9 +55,12 @@
             this.labelPolarPlotAlpha = new System.Windows.Forms.Label();
             this.tabPageBresenham = new System.Windows.Forms.TabPage();
             this.groupBoxBresenhamParameters = new System.Windows.Forms.GroupBox();
-            this.labelBresenhamP = new System.Windows.Forms.Label();
             this.textBoxBresenhamP = new System.Windows.Forms.TextBox();
+            this.labelBresenhamP = new System.Windows.Forms.Label();
             this.customizedToolTipDrawPlot = new KGG_1.CustomizedToolTip();
+            this.groupBoxBresenham = new System.Windows.Forms.GroupBox();
+            this.pictureBoxBresenham = new System.Windows.Forms.PictureBox();
+            this.buttonDrawBresenham = new System.Windows.Forms.Button();
             this.groupBoxCartesianPlotParameters.SuspendLayout();
             this.groupBoxCartesianPlot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCartesianPlot)).BeginInit();
@@ -69,6 +72,8 @@
             this.groupBoxPolarPlotParameters.SuspendLayout();
             this.tabPageBresenham.SuspendLayout();
             this.groupBoxBresenhamParameters.SuspendLayout();
+            this.groupBoxBresenham.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBresenham)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxCartesianPlotParameters
@@ -324,6 +329,7 @@
             // 
             // tabPageBresenham
             // 
+            this.tabPageBresenham.Controls.Add(this.groupBoxBresenham);
             this.tabPageBresenham.Controls.Add(this.groupBoxBresenhamParameters);
             this.tabPageBresenham.Location = new System.Drawing.Point(4, 22);
             this.tabPageBresenham.Name = "tabPageBresenham";
@@ -334,14 +340,22 @@
             // 
             // groupBoxBresenhamParameters
             // 
+            this.groupBoxBresenhamParameters.Controls.Add(this.buttonDrawBresenham);
             this.groupBoxBresenhamParameters.Controls.Add(this.textBoxBresenhamP);
             this.groupBoxBresenhamParameters.Controls.Add(this.labelBresenhamP);
             this.groupBoxBresenhamParameters.Location = new System.Drawing.Point(6, 6);
             this.groupBoxBresenhamParameters.Name = "groupBoxBresenhamParameters";
-            this.groupBoxBresenhamParameters.Size = new System.Drawing.Size(362, 100);
+            this.groupBoxBresenhamParameters.Size = new System.Drawing.Size(752, 42);
             this.groupBoxBresenhamParameters.TabIndex = 0;
             this.groupBoxBresenhamParameters.TabStop = false;
             this.groupBoxBresenhamParameters.Text = "Параметры";
+            // 
+            // textBoxBresenhamP
+            // 
+            this.textBoxBresenhamP.Location = new System.Drawing.Point(28, 13);
+            this.textBoxBresenhamP.Name = "textBoxBresenhamP";
+            this.textBoxBresenhamP.Size = new System.Drawing.Size(55, 20);
+            this.textBoxBresenhamP.TabIndex = 1;
             // 
             // labelBresenhamP
             // 
@@ -352,13 +366,6 @@
             this.labelBresenhamP.TabIndex = 0;
             this.labelBresenhamP.Text = "p:";
             // 
-            // textBoxBresenhamP
-            // 
-            this.textBoxBresenhamP.Location = new System.Drawing.Point(28, 13);
-            this.textBoxBresenhamP.Name = "textBoxBresenhamP";
-            this.textBoxBresenhamP.Size = new System.Drawing.Size(55, 20);
-            this.textBoxBresenhamP.TabIndex = 1;
-            // 
             // customizedToolTipDrawPlot
             // 
             this.customizedToolTipDrawPlot.AutoPopDelay = 10000;
@@ -368,6 +375,35 @@
             this.customizedToolTipDrawPlot.OwnerDraw = true;
             this.customizedToolTipDrawPlot.ReshowDelay = 100;
             this.customizedToolTipDrawPlot.Size = new System.Drawing.Size(400, 200);
+            // 
+            // groupBoxBresenham
+            // 
+            this.groupBoxBresenham.Controls.Add(this.pictureBoxBresenham);
+            this.groupBoxBresenham.Location = new System.Drawing.Point(6, 54);
+            this.groupBoxBresenham.Name = "groupBoxBresenham";
+            this.groupBoxBresenham.Size = new System.Drawing.Size(752, 559);
+            this.groupBoxBresenham.TabIndex = 1;
+            this.groupBoxBresenham.TabStop = false;
+            this.groupBoxBresenham.Text = "График";
+            // 
+            // pictureBoxBresenham
+            // 
+            this.pictureBoxBresenham.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxBresenham.Name = "pictureBoxBresenham";
+            this.pictureBoxBresenham.Size = new System.Drawing.Size(740, 534);
+            this.pictureBoxBresenham.TabIndex = 0;
+            this.pictureBoxBresenham.TabStop = false;
+            this.pictureBoxBresenham.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxBresenham_Paint);
+            // 
+            // buttonDrawBresenham
+            // 
+            this.buttonDrawBresenham.Location = new System.Drawing.Point(89, 11);
+            this.buttonDrawBresenham.Name = "buttonDrawBresenham";
+            this.buttonDrawBresenham.Size = new System.Drawing.Size(115, 23);
+            this.buttonDrawBresenham.TabIndex = 2;
+            this.buttonDrawBresenham.Text = "Построить график";
+            this.buttonDrawBresenham.UseVisualStyleBackColor = true;
+            this.buttonDrawBresenham.Click += new System.EventHandler(this.buttonDrawBresenham_Click);
             // 
             // FormPlot
             // 
@@ -393,6 +429,8 @@
             this.tabPageBresenham.ResumeLayout(false);
             this.groupBoxBresenhamParameters.ResumeLayout(false);
             this.groupBoxBresenhamParameters.PerformLayout();
+            this.groupBoxBresenham.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBresenham)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -429,6 +467,9 @@
         private System.Windows.Forms.GroupBox groupBoxBresenhamParameters;
         private System.Windows.Forms.TextBox textBoxBresenhamP;
         private System.Windows.Forms.Label labelBresenhamP;
+        private System.Windows.Forms.GroupBox groupBoxBresenham;
+        private System.Windows.Forms.PictureBox pictureBoxBresenham;
+        private System.Windows.Forms.Button buttonDrawBresenham;
     }
 }
 

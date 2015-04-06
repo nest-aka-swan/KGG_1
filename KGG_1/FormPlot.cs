@@ -182,7 +182,7 @@ namespace KGG_1
             // оси и радиусы
             int xxAxis = (int)((- maxX) * maxXX / (minX - maxX));
             int yyAxis = (int)((- maxX) * maxYY / (minX - maxX));
-            MessageBox.Show(maxXX.ToString() +" "+ xxAxis.ToString() +" "+ maxYY.ToString() +" "+ yyAxis.ToString());
+            //MessageBox.Show(maxXX.ToString() +" "+ xxAxis.ToString() +" "+ maxYY.ToString() +" "+ yyAxis.ToString());
             //e.Graphics.DrawEllipse()
 
             e.Graphics.DrawLine(Pens.Blue, 0, yyAxis, maxXX, yyAxis);
@@ -222,6 +222,17 @@ namespace KGG_1
                 yyPrev = yy;
                 first = false;
             }
+        }
+
+        private void buttonDrawBresenham_Click(object sender, EventArgs e)
+        {
+            InitCoefficientsPlot();
+            pictureBoxBresenham.Invalidate();
+        }
+
+        private void pictureBoxBresenham_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
