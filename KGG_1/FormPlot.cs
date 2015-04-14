@@ -19,7 +19,7 @@ namespace KGG_1
             InitializeComponent();
 
             // по умолчанию полярные
-            tabControlPlot.SelectedTab = tabPagePolarPlot;
+            tabControlPlot.SelectedTab = tabPageBresenham;
 
             // Чтобы парсить отрицательные
             fmt.NegativeSign = "-";
@@ -37,7 +37,7 @@ namespace KGG_1
             textBoxPolarPlotAlpha.Text = "-15.708";
             textBoxPolarPlotBeta.Text = "15.708";
 
-            textBoxBresenhamP.Text = "2";
+            textBoxBresenhamP.Text = "30";
 
             InitCoefficientsPlot();
         }
@@ -189,8 +189,6 @@ namespace KGG_1
             // оси и радиусы
             int xxAxis = (int)((- maxX) * maxXX / (minX - maxX));
             int yyAxis = (int)((- maxX) * maxYY / (minX - maxX));
-            //MessageBox.Show(maxXX.ToString() +" "+ xxAxis.ToString() +" "+ maxYY.ToString() +" "+ yyAxis.ToString());
-            //e.Graphics.DrawEllipse()
 
             e.Graphics.DrawLine(Pens.Blue, 0, yyAxis, maxXX, yyAxis);
             e.Graphics.DrawLine(Pens.Blue, xxAxis, 0, xxAxis, maxYY);
@@ -239,9 +237,103 @@ namespace KGG_1
 
         private void pictureBoxBresenham_Paint(object sender, PaintEventArgs e)
         {
-            int maxXX = pictureBoxBresenham.Width;
-            int maxYY = pictureBoxBresenham.Height;
-            //
+            int maxXX = 720;
+            int maxYY = 510;
+
+            Size tempSize = pictureBoxBresenham.Size;
+            tempSize.Width = maxXX;
+            tempSize.Height = maxYY;
+            pictureBoxBresenham.Size = tempSize;
+
+            int dx = maxXX / 2;
+            int dy = maxYY;
+
+            int x0 = 0;
+            int y0 = 0;
+            int x = 0;
+            int y = 0;
+
+            float Sd = ((y0 + 1) * (y0 + 1)) - 2 * BresP * (x0 + 1);
+            float Sv = ((y0 + 1) * (y0 + 1)) - 2 * BresP * x0;
+            float Sh = (y0 * y0) - 2 * BresP * (x0 + 1);
+
+            e.Graphics.FillRectangle(Brushes.Black, y0 + dx, dy - x0 - 10, 10, 10);
+
+            for(int xx = x0; xx <= maxXX; xx++)
+            {
+                if (Math.Abs(Sh) - Math.Abs(Sv) <= 0)
+                {
+                    if (Math.Abs(Sd) - Math.Abs(Sh) < 0)
+                        y+=10;
+                    x+=10;
+
+                }
+                else
+                {
+                    if (Math.Abs(Sv) - Math.Abs(Sd) > 0)
+                        x+=10;
+                    y+=10;
+
+                }
+
+                e.Graphics.FillRectangle(Brushes.Black, y + dx, dy - x - 10, 10, 10);
+                e.Graphics.FillRectangle(Brushes.Black, maxXX - (y + dx), dy - x - 10, 10, 10);
+
+                Sd = ((y + 1) * (y + 1)) - 2 * BresP * (x + 1);
+                Sv = ((y + 1) * (y + 1)) - 2 * BresP * x;
+                Sh = (y * y) - 2 * BresP * (x + 1);
+            }
+
+            // сетка
+            int gridXX = 0;
+            int gridYY = 0;
+            while(gridXX < maxXX)
+            {
+                e.Graphics.DrawLine(Pens.Gray, gridXX, 0, gridXX, maxYY);
+                gridXX += 10;
+            }
+            while (gridYY < maxYY)
+            {
+                e.Graphics.DrawLine(Pens.Gray, 0, gridYY, maxXX, gridYY);
+                gridYY += 10;
+            }
+
+            // обычный график
+            x0 = 0;
+            y0 = 0;
+            x = 0;
+            y = 0;
+
+            Sd = ((y0 + 1) * (y0 + 1)) - 2 * BresP * (x0 + 1);
+            Sv = ((y0 + 1) * (y0 + 1)) - 2 * BresP * x0;
+            Sh = (y0 * y0) - 2 * BresP * (x0 + 1);
+
+            e.Graphics.FillRectangle(Brushes.Red, y0 + dx, dy - x0, 1, 1);
+
+            for (int xx = x0; xx <= maxXX; xx++)
+            {
+                if (Math.Abs(Sh) - Math.Abs(Sv) <= 0)
+                {
+                    if (Math.Abs(Sd) - Math.Abs(Sh) < 0)
+                        y++;
+                    x++;
+
+                }
+                else
+                {
+                    if (Math.Abs(Sv) - Math.Abs(Sd) > 0)
+                        x++;
+                    y++;
+
+                }
+
+                e.Graphics.FillRectangle(Brushes.Red, y + dx + 5, dy - x, 1, 1);
+                e.Graphics.FillRectangle(Brushes.Red, maxXX - (y + dx) + 5, dy - x, 1, 1);
+
+                Sd = ((y + 1) * (y + 1)) - 2 * BresP * (x + 1);
+                Sv = ((y + 1) * (y + 1)) - 2 * BresP * x;
+                Sh = (y * y) - 2 * BresP * (x + 1);
+            }
         }
     }
 }

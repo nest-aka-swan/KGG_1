@@ -54,13 +54,13 @@
             this.labelPolarPlotBeta = new System.Windows.Forms.Label();
             this.labelPolarPlotAlpha = new System.Windows.Forms.Label();
             this.tabPageBresenham = new System.Windows.Forms.TabPage();
+            this.groupBoxBresenham = new System.Windows.Forms.GroupBox();
+            this.pictureBoxBresenham = new System.Windows.Forms.PictureBox();
             this.groupBoxBresenhamParameters = new System.Windows.Forms.GroupBox();
+            this.buttonDrawBresenham = new System.Windows.Forms.Button();
             this.textBoxBresenhamP = new System.Windows.Forms.TextBox();
             this.labelBresenhamP = new System.Windows.Forms.Label();
             this.customizedToolTipDrawPlot = new KGG_1.CustomizedToolTip();
-            this.groupBoxBresenham = new System.Windows.Forms.GroupBox();
-            this.pictureBoxBresenham = new System.Windows.Forms.PictureBox();
-            this.buttonDrawBresenham = new System.Windows.Forms.Button();
             this.groupBoxCartesianPlotParameters.SuspendLayout();
             this.groupBoxCartesianPlot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCartesianPlot)).BeginInit();
@@ -71,9 +71,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPolarPlot)).BeginInit();
             this.groupBoxPolarPlotParameters.SuspendLayout();
             this.tabPageBresenham.SuspendLayout();
-            this.groupBoxBresenhamParameters.SuspendLayout();
             this.groupBoxBresenham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBresenham)).BeginInit();
+            this.groupBoxBresenhamParameters.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxCartesianPlotParameters
@@ -199,7 +199,7 @@
             this.groupBoxCartesianPlot.Controls.Add(this.pictureBoxCartesianPlot);
             this.groupBoxCartesianPlot.Location = new System.Drawing.Point(6, 69);
             this.groupBoxCartesianPlot.Name = "groupBoxCartesianPlot";
-            this.groupBoxCartesianPlot.Size = new System.Drawing.Size(740, 534);
+            this.groupBoxCartesianPlot.Size = new System.Drawing.Size(740, 545);
             this.groupBoxCartesianPlot.TabIndex = 2;
             this.groupBoxCartesianPlot.TabStop = false;
             this.groupBoxCartesianPlot.Text = "График";
@@ -207,10 +207,9 @@
             // pictureBoxCartesianPlot
             // 
             this.pictureBoxCartesianPlot.BackColor = System.Drawing.Color.White;
-            this.pictureBoxCartesianPlot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxCartesianPlot.Location = new System.Drawing.Point(3, 16);
             this.pictureBoxCartesianPlot.Name = "pictureBoxCartesianPlot";
-            this.pictureBoxCartesianPlot.Size = new System.Drawing.Size(734, 515);
+            this.pictureBoxCartesianPlot.Size = new System.Drawing.Size(730, 510);
             this.pictureBoxCartesianPlot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCartesianPlot.TabIndex = 0;
             this.pictureBoxCartesianPlot.TabStop = false;
@@ -338,6 +337,25 @@
             this.tabPageBresenham.Text = "Алгоритм Брезенхема";
             this.tabPageBresenham.UseVisualStyleBackColor = true;
             // 
+            // groupBoxBresenham
+            // 
+            this.groupBoxBresenham.Controls.Add(this.pictureBoxBresenham);
+            this.groupBoxBresenham.Location = new System.Drawing.Point(6, 54);
+            this.groupBoxBresenham.Name = "groupBoxBresenham";
+            this.groupBoxBresenham.Size = new System.Drawing.Size(752, 559);
+            this.groupBoxBresenham.TabIndex = 1;
+            this.groupBoxBresenham.TabStop = false;
+            this.groupBoxBresenham.Text = "График";
+            // 
+            // pictureBoxBresenham
+            // 
+            this.pictureBoxBresenham.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxBresenham.Name = "pictureBoxBresenham";
+            this.pictureBoxBresenham.Size = new System.Drawing.Size(740, 534);
+            this.pictureBoxBresenham.TabIndex = 0;
+            this.pictureBoxBresenham.TabStop = false;
+            this.pictureBoxBresenham.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxBresenham_Paint);
+            // 
             // groupBoxBresenhamParameters
             // 
             this.groupBoxBresenhamParameters.Controls.Add(this.buttonDrawBresenham);
@@ -349,6 +367,16 @@
             this.groupBoxBresenhamParameters.TabIndex = 0;
             this.groupBoxBresenhamParameters.TabStop = false;
             this.groupBoxBresenhamParameters.Text = "Параметры";
+            // 
+            // buttonDrawBresenham
+            // 
+            this.buttonDrawBresenham.Location = new System.Drawing.Point(89, 11);
+            this.buttonDrawBresenham.Name = "buttonDrawBresenham";
+            this.buttonDrawBresenham.Size = new System.Drawing.Size(115, 23);
+            this.buttonDrawBresenham.TabIndex = 2;
+            this.buttonDrawBresenham.Text = "Построить график";
+            this.buttonDrawBresenham.UseVisualStyleBackColor = true;
+            this.buttonDrawBresenham.Click += new System.EventHandler(this.buttonDrawBresenham_Click);
             // 
             // textBoxBresenhamP
             // 
@@ -376,35 +404,6 @@
             this.customizedToolTipDrawPlot.ReshowDelay = 100;
             this.customizedToolTipDrawPlot.Size = new System.Drawing.Size(400, 200);
             // 
-            // groupBoxBresenham
-            // 
-            this.groupBoxBresenham.Controls.Add(this.pictureBoxBresenham);
-            this.groupBoxBresenham.Location = new System.Drawing.Point(6, 54);
-            this.groupBoxBresenham.Name = "groupBoxBresenham";
-            this.groupBoxBresenham.Size = new System.Drawing.Size(752, 559);
-            this.groupBoxBresenham.TabIndex = 1;
-            this.groupBoxBresenham.TabStop = false;
-            this.groupBoxBresenham.Text = "График";
-            // 
-            // pictureBoxBresenham
-            // 
-            this.pictureBoxBresenham.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxBresenham.Name = "pictureBoxBresenham";
-            this.pictureBoxBresenham.Size = new System.Drawing.Size(740, 534);
-            this.pictureBoxBresenham.TabIndex = 0;
-            this.pictureBoxBresenham.TabStop = false;
-            this.pictureBoxBresenham.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxBresenham_Paint);
-            // 
-            // buttonDrawBresenham
-            // 
-            this.buttonDrawBresenham.Location = new System.Drawing.Point(89, 11);
-            this.buttonDrawBresenham.Name = "buttonDrawBresenham";
-            this.buttonDrawBresenham.Size = new System.Drawing.Size(115, 23);
-            this.buttonDrawBresenham.TabIndex = 2;
-            this.buttonDrawBresenham.Text = "Построить график";
-            this.buttonDrawBresenham.UseVisualStyleBackColor = true;
-            this.buttonDrawBresenham.Click += new System.EventHandler(this.buttonDrawBresenham_Click);
-            // 
             // FormPlot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,10 +426,10 @@
             this.groupBoxPolarPlotParameters.ResumeLayout(false);
             this.groupBoxPolarPlotParameters.PerformLayout();
             this.tabPageBresenham.ResumeLayout(false);
-            this.groupBoxBresenhamParameters.ResumeLayout(false);
-            this.groupBoxBresenhamParameters.PerformLayout();
             this.groupBoxBresenham.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBresenham)).EndInit();
+            this.groupBoxBresenhamParameters.ResumeLayout(false);
+            this.groupBoxBresenhamParameters.PerformLayout();
             this.ResumeLayout(false);
 
         }
