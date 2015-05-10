@@ -60,6 +60,13 @@
             this.buttonDrawBresenham = new System.Windows.Forms.Button();
             this.textBoxBresenhamP = new System.Windows.Forms.TextBox();
             this.labelBresenhamP = new System.Windows.Forms.Label();
+            this.tabPagePolygons = new System.Windows.Forms.TabPage();
+            this.groupBoxPolygonsButtons = new System.Windows.Forms.GroupBox();
+            this.buttonPolygonsReset = new System.Windows.Forms.Button();
+            this.buttonPolygonsFirstPolygon = new System.Windows.Forms.Button();
+            this.buttonPolygonsSecondPolygon = new System.Windows.Forms.Button();
+            this.groupBoxPolygonsCanvas = new System.Windows.Forms.GroupBox();
+            this.pictureBoxPolygons = new System.Windows.Forms.PictureBox();
             this.customizedToolTipDrawPlot = new KGG_1.CustomizedToolTip();
             this.groupBoxCartesianPlotParameters.SuspendLayout();
             this.groupBoxCartesianPlot.SuspendLayout();
@@ -74,6 +81,10 @@
             this.groupBoxBresenham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBresenham)).BeginInit();
             this.groupBoxBresenhamParameters.SuspendLayout();
+            this.tabPagePolygons.SuspendLayout();
+            this.groupBoxPolygonsButtons.SuspendLayout();
+            this.groupBoxPolygonsCanvas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPolygons)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxCartesianPlotParameters
@@ -220,6 +231,7 @@
             this.tabControlPlot.Controls.Add(this.tabPageCartesianPlot);
             this.tabControlPlot.Controls.Add(this.tabPagePolarPlot);
             this.tabControlPlot.Controls.Add(this.tabPageBresenham);
+            this.tabControlPlot.Controls.Add(this.tabPagePolygons);
             this.tabControlPlot.Location = new System.Drawing.Point(8, 5);
             this.tabControlPlot.Name = "tabControlPlot";
             this.tabControlPlot.SelectedIndex = 0;
@@ -394,6 +406,78 @@
             this.labelBresenhamP.TabIndex = 0;
             this.labelBresenhamP.Text = "p:";
             // 
+            // tabPagePolygons
+            // 
+            this.tabPagePolygons.Controls.Add(this.groupBoxPolygonsCanvas);
+            this.tabPagePolygons.Controls.Add(this.groupBoxPolygonsButtons);
+            this.tabPagePolygons.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePolygons.Name = "tabPagePolygons";
+            this.tabPagePolygons.Size = new System.Drawing.Size(761, 616);
+            this.tabPagePolygons.TabIndex = 3;
+            this.tabPagePolygons.Text = "Пересечение многоугольников";
+            this.tabPagePolygons.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxPolygonsButtons
+            // 
+            this.groupBoxPolygonsButtons.Controls.Add(this.buttonPolygonsSecondPolygon);
+            this.groupBoxPolygonsButtons.Controls.Add(this.buttonPolygonsFirstPolygon);
+            this.groupBoxPolygonsButtons.Controls.Add(this.buttonPolygonsReset);
+            this.groupBoxPolygonsButtons.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxPolygonsButtons.Name = "groupBoxPolygonsButtons";
+            this.groupBoxPolygonsButtons.Size = new System.Drawing.Size(755, 68);
+            this.groupBoxPolygonsButtons.TabIndex = 0;
+            this.groupBoxPolygonsButtons.TabStop = false;
+            // 
+            // buttonPolygonsReset
+            // 
+            this.buttonPolygonsReset.Location = new System.Drawing.Point(348, 19);
+            this.buttonPolygonsReset.Name = "buttonPolygonsReset";
+            this.buttonPolygonsReset.Size = new System.Drawing.Size(75, 43);
+            this.buttonPolygonsReset.TabIndex = 2;
+            this.buttonPolygonsReset.Text = "Сброс";
+            this.buttonPolygonsReset.UseVisualStyleBackColor = true;
+            this.buttonPolygonsReset.Click += new System.EventHandler(this.buttonPolygonsReset_Click);
+            // 
+            // buttonPolygonsFirstPolygon
+            // 
+            this.buttonPolygonsFirstPolygon.Location = new System.Drawing.Point(6, 19);
+            this.buttonPolygonsFirstPolygon.Name = "buttonPolygonsFirstPolygon";
+            this.buttonPolygonsFirstPolygon.Size = new System.Drawing.Size(165, 43);
+            this.buttonPolygonsFirstPolygon.TabIndex = 0;
+            this.buttonPolygonsFirstPolygon.Text = "Завершить первый многоугольник";
+            this.buttonPolygonsFirstPolygon.UseVisualStyleBackColor = true;
+            this.buttonPolygonsFirstPolygon.Click += new System.EventHandler(this.buttonPolygonsFirstPolygon_Click);
+            // 
+            // buttonPolygonsSecondPolygon
+            // 
+            this.buttonPolygonsSecondPolygon.Enabled = false;
+            this.buttonPolygonsSecondPolygon.Location = new System.Drawing.Point(177, 19);
+            this.buttonPolygonsSecondPolygon.Name = "buttonPolygonsSecondPolygon";
+            this.buttonPolygonsSecondPolygon.Size = new System.Drawing.Size(165, 43);
+            this.buttonPolygonsSecondPolygon.TabIndex = 1;
+            this.buttonPolygonsSecondPolygon.Text = "Завершить второй многоугольник";
+            this.buttonPolygonsSecondPolygon.UseVisualStyleBackColor = true;
+            this.buttonPolygonsSecondPolygon.Click += new System.EventHandler(this.buttonPolygonsSecondPolygon_Click);
+            // 
+            // groupBoxPolygonsCanvas
+            // 
+            this.groupBoxPolygonsCanvas.Controls.Add(this.pictureBoxPolygons);
+            this.groupBoxPolygonsCanvas.Location = new System.Drawing.Point(4, 78);
+            this.groupBoxPolygonsCanvas.Name = "groupBoxPolygonsCanvas";
+            this.groupBoxPolygonsCanvas.Size = new System.Drawing.Size(754, 538);
+            this.groupBoxPolygonsCanvas.TabIndex = 1;
+            this.groupBoxPolygonsCanvas.TabStop = false;
+            // 
+            // pictureBoxPolygons
+            // 
+            this.pictureBoxPolygons.Location = new System.Drawing.Point(7, 11);
+            this.pictureBoxPolygons.Name = "pictureBoxPolygons";
+            this.pictureBoxPolygons.Size = new System.Drawing.Size(741, 521);
+            this.pictureBoxPolygons.TabIndex = 0;
+            this.pictureBoxPolygons.TabStop = false;
+            this.pictureBoxPolygons.Click += new System.EventHandler(this.pictureBoxPolygons_Click);
+            this.pictureBoxPolygons.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBoxPolygons_Paint);
+            // 
             // customizedToolTipDrawPlot
             // 
             this.customizedToolTipDrawPlot.AutoPopDelay = 10000;
@@ -430,6 +514,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBresenham)).EndInit();
             this.groupBoxBresenhamParameters.ResumeLayout(false);
             this.groupBoxBresenhamParameters.PerformLayout();
+            this.tabPagePolygons.ResumeLayout(false);
+            this.groupBoxPolygonsButtons.ResumeLayout(false);
+            this.groupBoxPolygonsCanvas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPolygons)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -469,6 +557,13 @@
         private System.Windows.Forms.GroupBox groupBoxBresenham;
         private System.Windows.Forms.PictureBox pictureBoxBresenham;
         private System.Windows.Forms.Button buttonDrawBresenham;
+        private System.Windows.Forms.TabPage tabPagePolygons;
+        private System.Windows.Forms.GroupBox groupBoxPolygonsButtons;
+        private System.Windows.Forms.Button buttonPolygonsSecondPolygon;
+        private System.Windows.Forms.Button buttonPolygonsFirstPolygon;
+        private System.Windows.Forms.Button buttonPolygonsReset;
+        private System.Windows.Forms.GroupBox groupBoxPolygonsCanvas;
+        private System.Windows.Forms.PictureBox pictureBoxPolygons;
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using KGG_1.Properties;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,12 +15,17 @@ namespace KGG_1
         System.Globalization.NumberFormatInfo fmt = new System.Globalization.NumberFormatInfo();
 
         private int BresP; // Bresenham P
+
+        private List<Point> PolygonPoints = new List<Point>(); // точки полигонов кидать сюда
+        private bool FirstPolygonReady = false;
+        private bool SecondPolygonReady = false;
+
         public FormPlot()
         {
             InitializeComponent();
 
             // по умолчанию полярные
-            tabControlPlot.SelectedTab = tabPageBresenham;
+            tabControlPlot.SelectedTab = tabPagePolygons;
 
             // Чтобы парсить отрицательные
             fmt.NegativeSign = "-";
@@ -38,6 +44,19 @@ namespace KGG_1
             textBoxPolarPlotBeta.Text = "15.708";
 
             textBoxBresenhamP.Text = "30";
+
+            //Bitmap flag = new Bitmap(200, 100);
+            //Graphics flagGraphics = Graphics.FromImage(flag);
+            //int red = 0;
+            //int white = 11;
+            //while (white <= 100)
+            //{
+            //    flagGraphics.FillRectangle(Brushes.Red, 0, red, 200, 10);
+            //    flagGraphics.FillRectangle(Brushes.White, 0, white, 200, 10);
+            //    red += 20;
+            //    white += 20;
+            //}
+            //pictureBoxPolygons.Image = flag;
 
             InitCoefficientsPlot();
         }
@@ -334,6 +353,66 @@ namespace KGG_1
                 Sv = ((y + 1) * (y + 1)) - 2 * BresP * x;
                 Sh = (y * y) - 2 * BresP * (x + 1);
             }
+        }
+
+        private void buttonPolygonsFirstPolygon_Click(object sender, EventArgs e)
+        {
+            if (PolygonPoints.Count == 0)
+            {
+                MessageBox.Show("Нет точек для полигона");
+                return;
+            }
+            FirstPolygonReady = true;
+            buttonPolygonsFirstPolygon.Enabled = false;
+            buttonPolygonsSecondPolygon.Enabled = true;
+            pictureBoxPolygons.Invalidate();
+        }
+
+        private void buttonPolygonsSecondPolygon_Click(object sender, EventArgs e)
+        {
+            if(PolygonPoints.Count == 0)
+            {
+                MessageBox.Show("Нет точек для полигона");
+                return;
+            }
+            SecondPolygonReady = true;
+            buttonPolygonsFirstPolygon.Enabled = false;
+            buttonPolygonsSecondPolygon.Enabled = false;
+            pictureBoxPolygons.Invalidate();
+        }
+
+        private void buttonPolygonsReset_Click(object sender, EventArgs e)
+        {
+            pictureBoxPolygons.Image = null;
+            FirstPolygonReady = SecondPolygonReady = false;
+            PolygonPoints.Clear();
+            buttonPolygonsFirstPolygon.Enabled = true;
+            buttonPolygonsSecondPolygon.Enabled = false;
+            // прибить все массивы точек, фигуры итп
+        }
+
+        private void pictureBoxPolygons_Paint(object sender, PaintEventArgs e)
+        {
+            //if(!(FirstPolygonReady || SecondPolygonReady))
+            //    return;
+            //Pen polygonPen = new Pen(Color.Black, 2);
+
+            //var prevPoint = PolygonPoints[0];
+            //foreach(var point in PolygonPoints)
+            //{
+            //    e.Graphics.DrawLine(Pens.Black, prevPoint, point);
+            //    prevPoint = point;
+            //}
+        }
+
+        private void pictureBoxPolygons_Click(object sender, EventArgs e)
+        {
+            var mousePoint = pictureBoxPolygons.PointToClient(Cursor.Position);
+            PolygonPoints.Add(mousePoint);
+            // рисовать
+            // https://msdn.microsoft.com/ru-ru/library/system.drawing.drawing2d.graphicspath(v=vs.110).aspx
+            // https://msdn.microsoft.com/ru-ru/library/5s2w9y70(v=vs.110).aspx
+            // https://msdn.microsoft.com/ru-ru/library/awbdfdhf(v=vs.110).aspx
         }
     }
 }
