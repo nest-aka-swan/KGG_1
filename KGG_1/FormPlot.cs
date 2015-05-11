@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,9 +17,17 @@ namespace KGG_1
 
         private int BresP; // Bresenham P
 
-        private List<Point> PolygonPoints = new List<Point>(); // точки полигонов кидать сюда
+        private List<Point> PolygonFirstPoints = new List<Point>(); // точки полигонов кидать сюда
+        private List<Point> PolygonSecondPoints = new List<Point>();
+
+        private GraphicsPath PolygonFirstGP = new GraphicsPath();
+        private GraphicsPath PolygonSecondGP = new GraphicsPath();
+        private Region PolygonSecondR;
+
         private bool FirstPolygonReady = false;
         private bool SecondPolygonReady = false;
+        private Pen PolygonPen = new Pen(Color.Black, 5);
+        private Pen PolygonCirclePen = new Pen(Color.Red, 6);
 
         public FormPlot()
         {
@@ -357,11 +366,15 @@ namespace KGG_1
 
         private void buttonPolygonsFirstPolygon_Click(object sender, EventArgs e)
         {
-            if (PolygonPoints.Count == 0)
+            if (PolygonFirstPoints.Count == 0)
             {
                 MessageBox.Show("Нет точек для полигона");
                 return;
             }
+            
+            PolygonFirstPoints.Add(PolygonFirstPoints[0]); // замыкаем
+            PolygonFirstGP.AddPolygon(PolygonFirstPoints.ToArray());
+
             FirstPolygonReady = true;
             buttonPolygonsFirstPolygon.Enabled = false;
             buttonPolygonsSecondPolygon.Enabled = true;
@@ -370,11 +383,17 @@ namespace KGG_1
 
         private void buttonPolygonsSecondPolygon_Click(object sender, EventArgs e)
         {
-            if(PolygonPoints.Count == 0)
+            if(PolygonFirstPoints.Count == 0)
             {
                 MessageBox.Show("Нет точек для полигона");
                 return;
             }
+
+            PolygonSecondPoints.Add(PolygonSecondPoints[0]); // замыкаем
+            PolygonSecondGP.AddPolygon(PolygonSecondPoints.ToArray());
+            PolygonSecondR = new Region(PolygonSecondGP);
+            PolygonSecondR.Xor(PolygonFirstGP);
+
             SecondPolygonReady = true;
             buttonPolygonsFirstPolygon.Enabled = false;
             buttonPolygonsSecondPolygon.Enabled = false;
@@ -385,7 +404,11 @@ namespace KGG_1
         {
             pictureBoxPolygons.Image = null;
             FirstPolygonReady = SecondPolygonReady = false;
-            PolygonPoints.Clear();
+            PolygonFirstPoints.Clear();
+            PolygonSecondPoints.Clear();
+            PolygonFirstGP.Reset();
+            PolygonSecondGP.Reset();
+            PolygonSecondR = null;
             buttonPolygonsFirstPolygon.Enabled = true;
             buttonPolygonsSecondPolygon.Enabled = false;
             // прибить все массивы точек, фигуры итп
@@ -393,26 +416,58 @@ namespace KGG_1
 
         private void pictureBoxPolygons_Paint(object sender, PaintEventArgs e)
         {
-            //if(!(FirstPolygonReady || SecondPolygonReady))
-            //    return;
-            //Pen polygonPen = new Pen(Color.Black, 2);
+            e.Graphics.FillPath(Brushes.Blue, PolygonFirstGP);
+            e.Graphics.FillPath(Brushes.Green, PolygonSecondGP);
+            if (PolygonFirstPoints.Count > 1)
+            {
+                var prevPoint = PolygonFirstPoints[0];
+                foreach (var point in PolygonFirstPoints)
+                {
+                    e.Graphics.DrawLine(PolygonPen, prevPoint, point);
+                    prevPoint = point;
+                }
+            }
+            foreach(var point in PolygonFirstPoints)
+            {
+                e.Graphics.DrawEllipse(PolygonCirclePen, point.X-3, point.Y-3, 6, 6);
+            }
 
-            //var prevPoint = PolygonPoints[0];
-            //foreach(var point in PolygonPoints)
-            //{
-            //    e.Graphics.DrawLine(Pens.Black, prevPoint, point);
-            //    prevPoint = point;
-            //}
+            if (PolygonSecondPoints.Count > 1)
+            {
+                var prevPoint = PolygonSecondPoints[0];
+                foreach (var point in PolygonSecondPoints)
+                {
+                    e.Graphics.DrawLine(PolygonPen, prevPoint, point);
+                    prevPoint = point;
+                }
+            }
+            foreach(var point in PolygonSecondPoints)
+            {
+                e.Graphics.DrawEllipse(PolygonCirclePen, point.X-3, point.Y-3, 6, 6);
+            }
+            if(PolygonSecondR != null)
+            {
+                e.Graphics.FillPath(Brushes.White, PolygonFirstGP);
+                e.Graphics.FillRegion(Brushes.Violet, PolygonSecondR);
+            }
         }
 
         private void pictureBoxPolygons_Click(object sender, EventArgs e)
         {
             var mousePoint = pictureBoxPolygons.PointToClient(Cursor.Position);
-            PolygonPoints.Add(mousePoint);
-            // рисовать
-            // https://msdn.microsoft.com/ru-ru/library/system.drawing.drawing2d.graphicspath(v=vs.110).aspx
-            // https://msdn.microsoft.com/ru-ru/library/5s2w9y70(v=vs.110).aspx
-            // https://msdn.microsoft.com/ru-ru/library/awbdfdhf(v=vs.110).aspx
+            if(FirstPolygonReady)
+            {
+                PolygonSecondPoints.Add(mousePoint);
+            }
+            else
+            {
+                PolygonFirstPoints.Add(mousePoint);
+            }
+            pictureBoxPolygons.Invalidate();
         }
+        // рисовать
+        // https://msdn.microsoft.com/ru-ru/library/system.drawing.drawing2d.graphicspath(v=vs.110).aspx
+        // https://msdn.microsoft.com/ru-ru/library/5s2w9y70(v=vs.110).aspx
+        // https://msdn.microsoft.com/ru-ru/library/awbdfdhf(v=vs.110).aspx
     }
 }
